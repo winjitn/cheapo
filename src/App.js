@@ -12,10 +12,10 @@ class App extends React.Component {
     const day = date.getDate(),
       month = date.getMonth() + 1,
       year = date.getFullYear();
-    if (this.props.fx.length === 0) {
-      console.log("req api");
-      this.props.fetchFx(day, month, year);
-    }
+    // if (this.props.fx.length === 0) {
+    console.log("req api");
+    this.props.fetchFx(day, month, year);
+    // }
     this.graph();
   }
 

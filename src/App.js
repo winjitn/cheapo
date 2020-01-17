@@ -16,6 +16,7 @@ class App extends React.Component {
     console.log("req api");
     this.props.fetchFx(day, month, year);
     // }
+
     this.graph();
   }
 
@@ -55,8 +56,6 @@ class App extends React.Component {
         ]
       },
       {
-        height: 500,
-        width: 1800,
         axisX: {
           type: Chartist.FixedScaleAxis,
           divisor: 5,
@@ -69,13 +68,13 @@ class App extends React.Component {
     document.querySelector("#lu").innerHTML = `Last updated: ${moment(
       this.c.KRW[this.c.KRW.length - 1].x
     ).format("L")}`;
-    document.querySelector("#krw").innerHTML = `Korean Won: ${(
+    document.querySelector("#krw").innerHTML += `Korean Won: ${(
       this.c.KRW[this.c.KRW.length - 1].y / this.price.KRW
     ).toFixed(4)}`;
-    document.querySelector("#jpy").innerHTML = `Japanese Yen: ${(
+    document.querySelector("#jpy").innerHTML += `Japanese Yen: ${(
       this.c.JPY[this.c.JPY.length - 1].y / this.price.JPY
     ).toFixed(4)}`;
-    document.querySelector("#usd").innerHTML = `US Dollar: ${(
+    document.querySelector("#usd").innerHTML += `US Dollar: ${(
       this.c.USD[this.c.USD.length - 1].y / this.price.USD
     ).toFixed(4)}`;
   }
@@ -84,12 +83,26 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="title">Price Tracker</div>
-        <div className="ct-chart"></div>
+        <div className="ct-ctn">
+          <div className="ct-chart"></div>
+          <button className="ui grey button" id="t">
+            Airpods 6 Months Currency Adjusted Price
+          </button>
+          <button className="ui grey button" id="yaxis">
+            Currency(THB)
+          </button>
+        </div>
         <div className="bottom">
           <div id="lu"></div>
-          <div id="krw"></div>
-          <div id="jpy"></div>
-          <div id="usd"></div>
+          <button className="ui red button" id="krw">
+            <i class="kr flag"></i>
+          </button>
+          <button className="ui salmon button" id="jpy">
+            <i class="jp flag"></i>
+          </button>
+          <button className="ui yellow button" id="usd">
+            <i class="us flag"></i>
+          </button>
         </div>
       </div>
     );
